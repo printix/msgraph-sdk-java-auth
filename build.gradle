@@ -52,7 +52,6 @@ publishing {
 
             from components.java
 
-            artifact sourceJar
             pom.withXml {
                 def root = asNode()
                 root.appendNode('name', 'Microsoft Graph Auth SDK for Java')
@@ -73,12 +72,12 @@ publishing {
         		def pomFile = file("${project.buildDir}/generated-pom.xml")
         		writeTo(pomFile)
         	}
-        	artifact(sourceJar) {
-        		classifier = 'sources'
-        	}
-        	artifact(javadocJar) {
-        		classifier = 'javadoc'
-        	}
+//        	artifact(sourceJar) {
+//        		classifier = 'sources'
+//        	}
+//        	artifact(javadocJar) {
+//        		classifier = 'javadoc'
+//        	}
 		}
 		
 		mavenCentralRelease(MavenPublication) {
@@ -96,24 +95,24 @@ publishing {
                     extension = 'pom.asc'
                 }
         	}
-        	artifact(sourceJar) {
-        		classifier = 'sources'
-        	}
-        	artifact(javadocJar) {
-        		classifier = 'javadoc'
-        	}
-        	project.tasks.signArchives.signatureFiles.each {
-        		artifact(it) {
-        			def matcher = it.file =~ /-(sources|javadoc)\.jar\.asc$/
-        			if(matcher.find()){
-        				classifier = matcher.group(1)
-        			}
-        			else{
-        				classifier = null
-        			}
-        			extension = 'jar.asc'
-				}
-			}
+//        	artifact(sourceJar) {
+//        		classifier = 'sources'
+//        	}
+//        	artifact(javadocJar) {
+//        		classifier = 'javadoc'
+//        	}
+//        	project.tasks.signArchives.signatureFiles.each {
+//        		artifact(it) {
+//        			def matcher = it.file =~ /-(sources|javadoc)\.jar\.asc$/
+//        			if(matcher.find()){
+//        				classifier = matcher.group(1)
+//        			}
+//        			else{
+//        				classifier = null
+//        			}
+//        			extension = 'jar.asc'
+//				}
+//			}
 		}
     }
 	repositories {
