@@ -33,3 +33,7 @@ hs_err_pid*
 /target/
 /pom.xml
 local.properties
+
+
+.idea
+*.iml
